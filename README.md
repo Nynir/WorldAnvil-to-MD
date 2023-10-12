@@ -1,7 +1,11 @@
 # WorldAnvil-to-MD
-Parses a World Anvil world export into Markdown files, primarily for [Obsidian](https://obsidian.md/). The script also adds some metadata yaml to the files, and downloads images which are formatted as Obsidian embeds
+Parses a World Anvil world export into Markdown files, primarily for [Obsidian](https://obsidian.md/). The script also adds some metadata yaml to the files and downloads images which are formatted as Obsidian embeds.
 
-If you use FoundryVTT for D&D go check out this awesome plugin by Praxxian that lets you import Obsidian files, images and all, into Foundry: https://github.com/Praxxian/lava-flow
+I wanted to cut the World Anvil cord but it was going to take me quite a bit of time to move all my content over, much less in an organized fashion. Hence, this nifty bit of code.
+
+If you're reading this, we're probably of a like mind, so I'll shout out two things that have made my GM'ing life far easier:
+- If you use FoundryVTT for D&D like I do go check out this awesome plugin by Praxxian that lets you import Obsidian files, images and all, into Foundry: https://github.com/Praxxian/lava-flow
+- I also highly recommend [Jeremy](https://github.com/valentine195) and all of their great Obsidian plugins for your D&D needs.
 
 # Usage
 
@@ -54,3 +58,5 @@ A quick rundown on how it's done:
 4. To finalize the export you need to provide your API key and an email address, specifically a Google one according to World Anvil (This looks to because they are sharing a drive version of the export with you, rather than emailing it directly to you)
 5. You can leave "Include Worlds" blank to export everthing, or specify a world name, then click Start
 6. Once it is completed you will be emailed your world export
+
+<a href="https://www.buymeacoffee.com/nynir" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
