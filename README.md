@@ -7,16 +7,19 @@ If you use FoundryVTT for D&D go check out this awesome plugin by Praxxian that 
 
 ## Using the script
 
-The three key variables you need to edit are:
+The key variables you need to edit are:
 ```
 source_directory = 'World-Anvil-Export'
 destination_directory = 'World-Anvil-Output'
 obsidian_resource_folder = 'images'
+
+attempt_bbcode = True
 ```
 
 ``source_directory`` should point at the local folder with your world anvil exports
 ``destination_directory`` is where you want the formatted files and folders to end up
 ``obsidian_resource_folder`` is where the images will be stored
+``attempt_bbcode`` determines whether or not it will attempt to convert BBCode to Markdown... it works sometimes, and probably is better than not doing so, but it isn't perfect
 
 Once these variables are set run the script with Python and it will print output when it is done.
 
