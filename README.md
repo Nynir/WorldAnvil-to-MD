@@ -23,6 +23,17 @@ attempt_bbcode = True
 
 Once these variables are set run the script with Python and it will print output when it is done.
 
+## Sample file structire
+
+An example file structure to export your files could look like so:
+```
+-> WorldAnvil-to-MD/
+---> images/
+---> World-Anvil-Export/
+---> World-Anvil-Output/
+---> WA-Parser.py
+```
+
 ## Modifying
 
 If you have any specialized sections or content tags you need to extract, you can try and add them under ``content_tags_to_extract``. Same with specific yaml metadata you want to add, you can try and add an additional entry under ``yaml_data``. The format is looking for nested tags, so keep that in mind depending on how nested your tags are.
