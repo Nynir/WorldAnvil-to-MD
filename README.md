@@ -1,7 +1,7 @@
 # WorldAnvil-to-MD
 Parses a World Anvil world export into Markdown files, primarily for [Obsidian](https://obsidian.md/). The script also adds some metadata yaml to the files and downloads images which are formatted as Obsidian embeds.
 
-I wanted to cut the World Anvil cord but it was going to take me quite a bit of time to move all my content over, much less in an organized fashion. Hence, this nifty bit of code.
+I wanted to bring my World Anvil content over to Obsidian but it was going to take me quite a bit of time to move it all over, much less in an organized fashion. Hence, this nifty bit of code.
 
 If you're reading this, we're probably of a like mind, so I'll shout out two things that have made my GM'ing life far easier:
 - If you use FoundryVTT for D&D like I do go check out this awesome plugin by Praxxian that lets you import Obsidian files, images and all, into Foundry: https://github.com/Praxxian/lava-flow
