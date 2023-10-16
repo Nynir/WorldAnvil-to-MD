@@ -66,15 +66,17 @@ def format_content(content):
         return str(text)
 
     text = re.sub(r'@\[([^\]]+)\]\([^)]+\)', r'[[\1]]', text) # Replaces World Anvil links with Obsidian internal links
+    text = re.sub(r'\r\n\r', r'\n', text) # This was to fix some extra spacing issues that came from my export
 
-    # THIS SECTION IS A WIP, these are ChatGPT-assisted regexes that aren't perfect
-    # TODO: Block quotes
+    # THIS SECTION IS A WIP, some of these are ChatGPT-assisted regexes that aren't perfect
     if attempt_bbcode:
         text = re.sub(r'[ \t]+', ' ', text) # Strip extra spaces and tabs
         text = re.sub(r'\n +(\[h\d\])', r'\n\1', text) # Remove leading spaces before headings
         text = re.sub(r'\[br\]', r'\n', text) # [br] to newline
         text = re.sub(r'\[h1\](.*?)\[/h1\]', r'# \1', text) # Convert [h1]...[/h1] to # ... (L1 heading)
         text = re.sub(r'\[h2\](.*?)\[/h2\]', r'## \1', text) # Convert [h2]...[/h2] to ## ... (L2 heading)
+        text = re.sub(r'\[h3\](.*?)\[/h3\]', r'### \1', text) # Convert [h3]...[/h3] to ### ... (L3 heading)
+        text = re.sub(r'\[h4\](.*?)\[/h4\]', r'#### \1', text) # Convert [h4]...[/h4] to #### ... (L4 heading)
         text = re.sub(r'\[p\](.*?)\[/p\]', r'\1\n', text) # Convert [p]...[/p] to a simple newline-delimited paragraph
         text = re.sub(r'\[b\](.*?)\[/b\]', r'**\1**', text) # Convert [b]...[/b] to **...** (bold)
         text = re.sub(r'\[i\](.*?)\[/i\]', r'*\1*', text) # Convert [i]...[/i] to *...* (italic)
@@ -83,6 +85,15 @@ def format_content(content):
         text = re.sub(r'\[url\](.*?)\[/url\]', r'[\1]', text) # Convert [url]URL[/url] to [text](URL)
         text = re.sub(r'\[list\](.*?)\[/list\]', lambda m: re.sub(r'\[\*\](.*?)\n?', r'* \1\n', m.group(1), flags=re.DOTALL), text, flags=re.DOTALL) # Convert [list]...[/list] to bullet point lists
         text = re.sub(r'\[code\](.*?)\[/code\]', r'```\n\1\n```', text) # Convert [code]...[/code] to code blocks
+        text = re.sub(r'\[quote\]([\s\S]*?)\[/quote\]', r'> \1', text) # Convert [quote] ... [/quote] to Obsidian block quotes
+        
+        # These two items will require a CSS snippet to work properly, I included a sample in the repo
+        text = re.sub(r'\[sup\](.*?)\[/sup\]', r'<sup>\1</sup>', text) # Superscript
+        text = re.sub(r'\[sub\](.*?)\[/sub\]', r'<sub>\1</sub>', text) # Subscript
+
+        # List Items
+        text = re.sub(r'\[ol\]|\[/ol\]', r'', text)
+        text = re.sub(r'\[li\](.*?)\[/li\]', r'- \1', text)
 
     return text
 
