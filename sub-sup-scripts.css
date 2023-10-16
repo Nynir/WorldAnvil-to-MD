@@ -1,0 +1,12 @@
+/* Superscript */
+sup {
+    vertical-align: super;
+    font-size: smaller;
+  }
+  
+  /* Subscript */
+  sub {
+    vertical-align: sub;
+    font-size: smaller;
+  }
+  
