@@ -93,6 +93,7 @@ def format_content(content):
 
         # List Items
         text = re.sub(r'\[ol\]|\[/ol\]', r'', text)
+        text = re.sub(r'\[ul\]|\[/ul\]', r'', text)
         text = re.sub(r'\[li\](.*?)\[/li\]', r'- \1', text)
 
     return text
