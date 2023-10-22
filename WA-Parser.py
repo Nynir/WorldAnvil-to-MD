@@ -54,6 +54,23 @@ def extract_sections(data, markdown_file):
                 section_key = ' '.join(section_key.split('_')).title()
                 markdown_file.write(f"\n## {section_key}\n\n{section_content}\n")
 
+def extract_relations(data, markdown_file):
+    relations = data.get("relations", {})
+    for relation_key, relation_data in relations.items():
+        if isinstance(relation_data, dict) and "items" in relation_data:
+            content = ''
+            if isinstance(relation_data["items"], list):
+                for item in relation_data["items"]:
+                    if item["relationshipType"] == "article":
+                        content = content + '[[' + item["title"] + ']]\n'
+                    else:
+                        content = content + item["title"] + '\n'
+            else:
+                content = "[[" + relation_data["items"]["title"] + "]]"
+            markdown_file.write(f"\n## {relation_key}\n\n{content}\n")
+
+
+
 def create_parent_directory(file_path):
     parent_directory = os.path.dirname(file_path)
     os.makedirs(parent_directory, exist_ok=True)
@@ -167,6 +184,7 @@ try:
                     
                     # Extract extra sections, create L2 headers and put their content below
                     extract_sections(data, markdown_file)
+                    extract_relations(data, markdown_file)
 
                     progress_bar.update(1)
 
