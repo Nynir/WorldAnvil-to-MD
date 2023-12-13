@@ -102,7 +102,7 @@ def format_content(content):
         text = re.sub(r'\[url\](.*?)\[/url\]', r'[\1]', text) # Convert [url]URL[/url] to [text](URL)
         text = re.sub(r'\[list\](.*?)\[/list\]', lambda m: re.sub(r'\[\*\](.*?)\n?', r'* \1\n', m.group(1), flags=re.DOTALL), text, flags=re.DOTALL) # Convert [list]...[/list] to bullet point lists
         text = re.sub(r'\[code\](.*?)\[/code\]', r'```\n\1\n```', text) # Convert [code]...[/code] to code blocks
-        text = re.sub(r'\[quote\]([\s\S]*?)\[/quote\]', r'> \1', text) # Convert [quote] ... [/quote] to Obsidian block quotes
+        text = re.sub(r'\[quote\]([\s\S]*?)\[/quote\]', lambda m: '> ' + '\n> '.join(m.group(1).split('\n')), text, flags=re.DOTALL) # Convert [quote] ... [/quote] to Obsidian block quotes
         
         # These two items will require a CSS snippet to work properly, I included a sample in the repo
         text = re.sub(r'\[sup\](.*?)\[/sup\]', r'<sup>\1</sup>', text) # Superscript
